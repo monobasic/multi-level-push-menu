@@ -3,7 +3,7 @@
  *
  * Licensed under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
- * 
+ *
  * Copyright 2013-2014, Make IT d.o.o.
  * http://multi-level-push-menu.make.rs
  * https://github.com/adgsm/multi-level-push-menu
@@ -13,7 +13,7 @@
 		"use strict";
 		var args = arguments,
 			returnValue = null;
-		
+
 		this.each(function(){
 			var instance = this,
 				$this = $( this ),
@@ -342,7 +342,7 @@
 					position = arguments[2],
 					$itemGroup = $levelHolder.find( 'ul:first' ),
 					$item = $( "<li />" );
-					( position < ( $itemGroup.children( 'li' ).length ) && position >= 0 ) ? 
+					( position < ( $itemGroup.children( 'li' ).length ) && position >= 0 ) ?
 						$item.insertBefore( $itemGroup.children( 'li' ).eq( position ) ) : $item.appendTo( $itemGroup );
 					$item.attr( { "style" : "text-align: " + ( ( instance.settings.direction == 'rtl' ) ? "right" : "left" ) } );
 				    if( item.id != undefined ) $item.attr( { "id" : item.id } );
@@ -528,8 +528,8 @@
 					instance.redraw = false;
 				}
 			}
-			
-			// Simple/singe DOM element width sizing 
+
+			// Simple/singe DOM element width sizing
 			function sizeElementWidth( $element , size ) {
 				if( $element == undefined || size == undefined ) return false;
 				$element.css( 'min-width' , '' );
@@ -590,7 +590,7 @@
 				return $this;
 			}
 
-			// Initialize menu in collapsed/expanded mode 
+			// Initialize menu in collapsed/expanded mode
 			function startMode( mode ) {
 				if( mode ) {
 					var $baseLevelHolder = $('#' + instance.settings.menuID + ' div.levelHolderClass:first');
@@ -659,7 +659,7 @@
 				var $nextLevelHolders = instance.settings.container
 					.find( '#' + instance.settings.menuID + ' div.levelHolderClass' )
 					.filter(function(){
-						var retObjs = ( instance.settings.direction == 'rtl' ) ? 
+						var retObjs = ( instance.settings.direction == 'rtl' ) ?
 						($( this ).attr( 'data-level' ) > level) && (parseInt( $( this ).css( 'margin-right' ) ) >= 0 && $( this ).position().left < instance.settings.container.width() - instance.settings.overlapWidth )
 						:
 						($( this ).attr( 'data-level' ) > level) && (parseInt( $( this ).css( 'margin-left' ) ) >= 0 && $( this ).position().left >= 0 );
@@ -668,7 +668,7 @@
 					$prevLevelHolders = instance.settings.container
 					.find( '#' + instance.settings.menuID + ' div.levelHolderClass' )
 					.filter(function(){
-						var retObjs = ( instance.settings.direction == 'rtl' ) ? 
+						var retObjs = ( instance.settings.direction == 'rtl' ) ?
 						($( this ).attr( 'data-level' ) <= level) && (parseInt( $( this ).css( 'margin-right' ) ) >= 0 && $( this ).position().left < instance.settings.container.width() - instance.settings.overlapWidth )
 						:
 						($( this ).attr( 'data-level' ) <= level) && (parseInt( $( this ).css( 'margin-left' ) ) >= 0 && $( this ).position().left >= 0 );
@@ -984,7 +984,7 @@
 				return returnValue;
 			}
 
-			// Finds the same part of the path to root of two provided menus 
+			// Finds the same part of the path to root of two provided menus
 			function comparePaths() {
 				var $levelHolder0 = arguments[0],
 					$levelHolder1 = arguments[1],
@@ -1107,7 +1107,7 @@
 				}
 				return response;
 			}
-			
+
 			// Mobile check
 			// http://coveroverflow.com/a/11381730/989439
 			function mobileCheck() {
@@ -1116,14 +1116,14 @@
 				return check;
 			}
 
-			if( mobileCheck() ) {
-				clickEventType = 'touchend';
-				dragEventType = 'touchmove';
-			}
-			else {
+			// if( mobileCheck() ) {
+			// 	clickEventType = 'touchend';
+			// 	dragEventType = 'touchmove';
+			// }
+			// else {
 				clickEventType = 'click';
 				dragEventType = 'mousedown';
-			}
+			//}
 
 			// Invoke called method or init
 			if ( methods[options] ) {
